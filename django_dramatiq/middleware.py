@@ -12,7 +12,7 @@ class AdminMiddleware(Middleware):
     """This middleware keeps track of task executions.
     """
 
-    def after_enqueue(self, broker, message, delay):
+    def before_enqueue(self, broker, message, delay):
         from .models import Task
 
         LOGGER.debug("Creating Task from message %r.", message.message_id)
